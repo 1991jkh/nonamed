@@ -25,11 +25,11 @@ namespace _20260209_beakjoon_1003
 
             int[] count_0 = new int[50];
             int[] count_1 = new int[50];
-
+            
             for (int i = 0; i < count_0.Length; i++)
             {
                 fibonacci(i);
-
+            
                 int fibonacci(int n)
                 {
                     if (n == 0)
@@ -53,7 +53,7 @@ namespace _20260209_beakjoon_1003
             for (int i = 0; i < count_1.Length; i++)
             {
                 fibonacci(i);
-
+            
                 int fibonacci(int n)
                 {
                     if (n == 0)
@@ -80,6 +80,33 @@ namespace _20260209_beakjoon_1003
             }
             Console.Write(sb);
             sr.ReadLine();
+            
+
+            //int[,] count = new int[50, 2];
+            //for (int i = 0; i < numbers.Length; i++)
+            //{
+            //    fibonacci(numbers[i]);
+
+            //    (int, int) fibonacci(int n)
+            //    {
+            //        if (n == 0)
+            //        {
+            //            return (count[n, 0] = 1, count[n, 1] = 0);
+            //        }
+            //        else if (n == 1)
+            //        {
+            //            return (count[n, 0] = 1, count[n, 1] = 0);
+            //        }
+            //        else
+            //        {
+            //            if (count[n, 0] == 0 && count[n, 1] == 0)
+            //            {
+            //                return (count[n, 0] = count[n - 1, 0] + count[n - 2, 0], count[n, 1] = count[n - 1, 1] + count[n - 2, 1]);
+            //            }
+            //        }
+            //        return (count[n, 0], count[n, 1]);
+            //    }
+            //}
         }
     }
 }

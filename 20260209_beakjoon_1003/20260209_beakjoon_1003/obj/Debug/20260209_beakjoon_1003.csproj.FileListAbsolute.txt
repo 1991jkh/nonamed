@@ -1,0 +1,7 @@
+D:\GitHub\nonamed\20260209_beakjoon_1003\20260209_beakjoon_1003\bin\Debug\20260209_beakjoon_1003.exe.config
+D:\GitHub\nonamed\20260209_beakjoon_1003\20260209_beakjoon_1003\bin\Debug\20260209_beakjoon_1003.exe
+D:\GitHub\nonamed\20260209_beakjoon_1003\20260209_beakjoon_1003\bin\Debug\20260209_beakjoon_1003.pdb
+D:\GitHub\nonamed\20260209_beakjoon_1003\20260209_beakjoon_1003\obj\Debug\20260209_beakjoon_1003.csproj.AssemblyReference.cache
+D:\GitHub\nonamed\20260209_beakjoon_1003\20260209_beakjoon_1003\obj\Debug\20260209_beakjoon_1003.csproj.CoreCompileInputs.cache
+D:\GitHub\nonamed\20260209_beakjoon_1003\20260209_beakjoon_1003\obj\Debug\20260209_beakjoon_1003.exe
+D:\GitHub\nonamed\20260209_beakjoon_1003\20260209_beakjoon_1003\obj\Debug\20260209_beakjoon_1003.pdb

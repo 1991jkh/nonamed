@@ -7,185 +7,146 @@ using System.Threading.Tasks;
 
 namespace _20260210_beakjoon_2317
 {
+
     class Program
     {
+        static List<int> bigtosmall(List<int> array)
+        {
+            for (int i = 0; i < array.Count; i++)//큰 작
+            {
+                for (int j = 1; j < array.Count; j++)
+                {
+                    if (array[i] < array[j])
+                    {
+                        int temp = array[j];
+                        array[j] = array[i];
+                        array[i] = temp;
+                    }
+                }
+            }
+
+            return array;
+        }
+
+        static List<int> smalltobig(List<int> array)
+        {
+            for (int i = 0; i < array.Count; i++)//작 큰
+            {
+                for (int j = 1; j < array.Count; j++)
+                {
+                    if (array[i] > array[j])
+                    {
+                        int temp = array[j];
+                        array[j] = array[i];
+                        array[i] = temp;
+                    }
+                }
+            }
+
+            return array;
+        }
+
         static void Main(string[] args)
         {
-            StringBuilder sb = new StringBuilder();
-            StreamReader sr = new StreamReader(Console.OpenStandardOutput());
+            StreamReader sr = new StreamReader(Console.OpenStandardInput());
 
             string[] input = sr.ReadLine().Split(' ');
 
-            int lionAmount = int.Parse(input[1]);
-            int[] Lions = new int[lionAmount];
+            int totalAcount = int.Parse(input[0]);
+            int lionAcount = int.Parse(input[1]);
+            int normalAcount = totalAcount - lionAcount;
 
-            int totalAmount = int.Parse(input[0]);
-            int[] normals = new int[totalAmount-lionAmount];
+            List<int> lions = new List<int>();
+            List<int> normals = new List<int>();
 
-            for (int i = 0; i < Lions.Length; i++)
+            for (int i = 0; i < lionAcount; i++)
             {
-                Lions[i] = int.Parse(sr.ReadLine());
-            }
-            for (int i = 0; i < normals.Length; i++)
-            {
-                normals[i] = int.Parse(sr.ReadLine());
+                lions.Add(int.Parse(sr.ReadLine()));
             }
 
-            List<int> instance = new List<int>();
-            List<int> count = new List<int>();
-            int numbAcount = 0;
-
-            for(int a=1; a<Lions.Length; a++)
+            for (int i = 0; i < normalAcount; i++)
             {
-                if(Lions[a] > Lions[a-1])
+                normals.Add(int.Parse(sr.ReadLine()));
+            }
+
+            for (int i = lions.Count - 1; i > 0; i--)
+            {
+                if (lions[i] < lions[i - 1])//큰 작
                 {
-                    for (int i = 0; i < normals.Length; i++)//작은수 먼저
+                    bigtosmall(normals);
+                    if (normals.Count != 0)
                     {
-                        for (int j = 1; j < normals.Length; j++)
+                        for (int j = normals.Count - 1; j >= 0; j--)
                         {
-                            if (normals[i] > normals[j])
+                            if (lions[i] < normals[j] && lions[i - 1] > normals[j])
                             {
-                                int temp = normals[j];
-                                normals[j] = normals[i];
-                                normals[i] = temp;
+                                lions.Insert(i, normals[j]);
+                                normals.RemoveAt(j);
                             }
                         }
-                    }
-
-                    for (int n = 1; n < Lions.Length; n++)
-                    {
-                        for (int m = 0; m < normals.Length; m++)
-                        {
-                            if ((normals[m] > Lions[n] && normals[m] < Lions[n - 1]) || (normals[m] < Lions[n] && normals[m] > Lions[n - 1]))
-                            {
-                                numbAcount++;
-                                instance.Add(normals[n]);
-                            }
-                        }
-                        count.Add(numbAcount);
-                        numbAcount = 0;
                     }
                 }
-                if (Lions[a] < Lions[a-1])
+                else if (lions[i] > lions[i - 1])//작 큰
                 {
-                    for (int i = 0; i < normals.Length; i++)//큰수 먼저
+                    smalltobig(normals);
+                    if (normals.Count != 0)
                     {
-                        for (int j = 1; j < normals.Length; j++)
+                        for (int j = normals.Count - 1; j >= 0; j--)
                         {
-                            if (normals[i] < normals[j])
+                            if (lions[i] > normals[j] && lions[i - 1] < normals[j])
                             {
-                                int temp = normals[j];
-                                normals[j] = normals[i];
-                                normals[i] = temp;
+                                lions.Insert(i, normals[j]);
+                                normals.RemoveAt(j);
                             }
                         }
-                    }
-
-                    for (int n = 1; n < Lions.Length; n++)
-                    {
-                        for (int m = 0; m < normals.Length; m++)
-                        {
-                            if ((normals[m] > Lions[n] && normals[m] < Lions[n - 1]) || (normals[m] < Lions[n] && normals[m] > Lions[n - 1]))
-                            {
-                                numbAcount++;
-                                instance.Add(normals[n]);
-                            }
-                        }
-                        count.Add(numbAcount);
-                        numbAcount = 0;
                     }
                 }
             }
 
-            List<int> total = new List<int>();
-            int Q = 0;
-            for(int i=0; i<Lions.Length; i++)
-            {
-                total.Add(Lions[i]);
-                for(Q=0; Q<count[i]; Q++)
-                {
-                    total.Add(instance[Q]);
-                }
-                instance.RemoveRange(0,count[i]);
-            }
+            int temp = 0;
+            int index = 0;
+            int result = 1000000000;
 
-            List<int> small = new List<int>();
-            int smallCount = 0;
-            List<int> large = new List<int>();
-            int largetCount = 0;
-            List<int> final = new List<int>();
-            for(int a=0;a<normals.Length; a++)
+            if (normals.Count != 0)
             {
-                if(Lions[a]<Lions[lionAmount])
+                for (int i = normals.Count - 1; i >= 0; i--)
                 {
-                    for (int i = 0; i < normals.Length; i++)//작은수 먼저
+                    index = 0;
+                    for (int j = lions.Count - 1; j >= 0; j--)
                     {
-                        for (int j = 1; j < normals.Length; j++)
+                        temp = 0;
+                        lions.Insert(j + 1, normals[i]);
+                        for (int k = lions.Count - 1; k > 0; k--)
                         {
-                            if (normals[i] > normals[j])
-                            {
-                                int temp = normals[j];
-                                normals[j] = normals[i];
-                                normals[i] = temp;
-                            }
+                            temp += Math.Abs(lions[k] - lions[k - 1]);
                         }
+                        if (result > temp)
+                        {
+                            result = temp;
+                            index = j + 1;
+                        }
+                        lions.RemoveAt(j + 1);
                     }
-
-
+                    lions.Insert(index, normals[i]);
+                    normals.RemoveAt(i);
                 }
             }
-
-            int result = 0;
-
-            for (int i = 1; i < total.Count; i++)
+            else
             {
-                result += Math.Abs(total[i] - total[i - 1]);
+                result = 0;
+                for (int i = 1; i < lions.Count; i++)
+                {
+                    result += Math.Abs(lions[i] - lions[i - 1]);
+                }
             }
-
+            //Console.WriteLine();
             Console.WriteLine($"{result}");
-            sr.Read();
+            //Console.WriteLine();
+            //for (int i = 0; i < lions.Count; i++)
+            //{
+            //    Console.WriteLine($"{lions[i]}");
+            //}
+            Console.ReadLine();
         }
     }
 }
-#region 1
-//for (int i = 0; i < normals.Length; i++)//큰수 먼저
-//{
-//    for (int j = 1; j < normals.Length; j++)
-//    {
-//        if (normals[i] < normals[j])
-//        {
-//            int temp = normals[j];
-//            normals[j] = normals[i];
-//            normals[i] = temp;
-//        }
-//    }
-//}
-
-//for (int i = 0; i < normals.Length; i++)//작은수 먼저
-//{
-//    for (int j = 1; j < normals.Length; j++)
-//    {
-//        if (normals[i] > normals[j])
-//        {
-//            int temp = normals[j];
-//            normals[j] = normals[i];
-//            normals[i] = temp;
-//        }
-//    }
-//}
-
-//for (int n = 1; n < Lions.Length; n++)
-//{
-//    for (int m = 0; m < normals.Length; m++)
-//    {
-//        if ((normals[m] > Lions[n] && normals[m] < Lions[n - 1]) || (normals[m] < Lions[n] && normals[m] > Lions[n - 1]))
-//        {
-//            numbAcount++;
-//            instance.Add(normals[n]);
-//        }
-//    }
-//    count.Add(numbAcount);
-//    numbAcount = 0;
-//}
-#endregion
-

@@ -103,32 +103,53 @@ namespace _20260210_beakjoon_2317
                 }
             }
 
-            int temp = 0;
-            int index = 0;
-            int result = 1000000000;
+            //int temp = 0;
+            //int index = 0;
+            //int result = 1000000000;
 
-            if (normals.Count != 0)
+            /////제일 gap이 작은 수를 찾아서 그 앞 뒤 로 배치 후 결과값만 비교
+            //if (normals.Count != 0)
+            //{
+            //    for (int i = normals.Count - 1; i >= 0; i--)
+            //    {
+            //        index = 0;
+            //        for (int j = lions.Count - 1; j >= 0; j--)
+            //        {
+            //            temp = 0;
+            //            lions.Insert(j + 1, normals[i]);
+            //            for (int k = lions.Count - 1; k > 0; k--)
+            //            {
+            //                temp += Math.Abs(lions[k] - lions[k - 1]);
+            //            }
+            //            if (result > temp)
+            //            {
+            //                result = temp;
+            //                index = j + 1;
+            //            }
+            //            lions.RemoveAt(j + 1);
+            //        }
+            //        lions.Insert(index, normals[i]);
+            //        normals.RemoveAt(i);
+            //    }
+            //}
+            int gap = 10000;
+            int index = 0;
+            int result = 0;
+            if(normals.Count != 0)
             {
-                for (int i = normals.Count - 1; i >= 0; i--)
+                for(int i=normals.Count-1; i>=0; i--)
                 {
-                    index = 0;
-                    for (int j = lions.Count - 1; j >= 0; j--)
+                    for(int j=lions.Count-1; j>=0; j--)
                     {
-                        temp = 0;
-                        lions.Insert(j + 1, normals[i]);
-                        for (int k = lions.Count - 1; k > 0; k--)
+                        int temp = Math.Abs(normals[i] - lions[j]);
+                        if(gap>temp)
                         {
-                            temp += Math.Abs(lions[k] - lions[k - 1]);
+                            gap = temp;
+                            index = j;
                         }
-                        if (result > temp)
-                        {
-                            result = temp;
-                            index = j + 1;
-                        }
-                        lions.RemoveAt(j + 1);
                     }
-                    lions.Insert(index, normals[i]);
-                    normals.RemoveAt(i);
+
+
                 }
             }
             else

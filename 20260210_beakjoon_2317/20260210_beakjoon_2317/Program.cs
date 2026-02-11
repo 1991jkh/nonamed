@@ -35,21 +35,18 @@ namespace _20260210_beakjoon_2317
 
             normals.Sort();
 
-            for (int i = 0; i < lions.Count; i++)
+            for (int i = 1; i < lions.Count; i++)
             {
                 int left = Math.Min(lions[i - 1], lions[i]);
                 int right = Math.Max(lions[i - 1], lions[i]);
-                for (int j = 0; i < normals.Count; j++)
+                for (int j = normals.Count - 1; j >= 0; j--)
                 {
                     if (left < normals[j] && normals[j] < right)
                     {
-                        normals.RemoveAt(i);
+                        normals.RemoveAt(j);
                     }
                 }
             }
-
-
-
 
             int result = 0;
 
@@ -58,15 +55,51 @@ namespace _20260210_beakjoon_2317
                 result += Math.Abs(lions[i] - lions[i - 1]);
             }
 
+
+            if (normals.Count != 0)
+            {
+                for (int i = 0; i < normals.Count; i++)
+                {
+                    int gap = 0;
+                    for (int j = 0; j < lions.Count - 1; j++)
+                    {
+                        int temp = Math.Abs(normals[i] - lions[j]) + Math.Abs(normals[i] - lions[j + 1]) - Math.Abs(lions[j] - lions[j + 1]);
+                        if (temp < gap) gap = temp;
+                    }
+                }
+            }
+
+
+
+            //int lion_min = Math.Min(lions[0], lions[lions.Count - 1]);
+            //int lion_max = Math.Max(lions[0], lions[lions.Count - 1]);
+
+            //if (normals.Count > 0)
+            //{
+            //    if (normals[0] < lion_min)
+            //    {
+            //        result += Math.Abs(normals[0] - lion_min);
+            //    }
+
+            //    if (normals[normals.Count - 1] > lion_max)
+            //    {
+            //        result += Math.Abs(normals[normals.Count - 1] - lion_max);
+            //    }
+
+            //normals[0]
+            //normals[normals.Count-1]
+            //int min_left = Math.Min()
+
+
+
             //result += Math.min 으로 normals에 남아있는 첫 수 와 마지막 수. lion 0, 마지막 이렇게 비교해서 result에 더하기
             //Console.WriteLine();
             Console.WriteLine($"{result}");
-            //Console.WriteLine();
+            sr.ReadLine();
             //for (int i = 0; i < lions.Count; i++)
             //{
             //    Console.WriteLine($"{lions[i]}");
             //}
-            Console.ReadLine();
         }
     }
 }

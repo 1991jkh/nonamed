@@ -10,42 +10,6 @@ namespace _20260210_beakjoon_2317
 
     class Program
     {
-        static List<int> bigtosmall(List<int> array)
-        {
-            for (int i = 0; i < array.Count; i++)//큰 작
-            {
-                for (int j = 1; j < array.Count; j++)
-                {
-                    if (array[i] < array[j])
-                    {
-                        int temp = array[j];
-                        array[j] = array[i];
-                        array[i] = temp;
-                    }
-                }
-            }
-
-            return array;
-        }
-
-        static List<int> smalltobig(List<int> array)
-        {
-            for (int i = 0; i < array.Count; i++)//작 큰
-            {
-                for (int j = 1; j < array.Count; j++)
-                {
-                    if (array[i] > array[j])
-                    {
-                        int temp = array[j];
-                        array[j] = array[i];
-                        array[i] = temp;
-                    }
-                }
-            }
-
-            return array;
-        }
-
         static void Main(string[] args)
         {
             StreamReader sr = new StreamReader(Console.OpenStandardInput());
@@ -69,97 +33,32 @@ namespace _20260210_beakjoon_2317
                 normals.Add(int.Parse(sr.ReadLine()));
             }
 
-            for (int i = lions.Count - 1; i > 0; i--)
+            normals.Sort();
+
+            for (int i = 0; i < lions.Count; i++)
             {
-                if (lions[i] < lions[i - 1])//큰 작
+                int left = Math.Min(lions[i - 1], lions[i]);
+                int right = Math.Max(lions[i - 1], lions[i]);
+                for (int j = 0; i < normals.Count; j++)
                 {
-                    bigtosmall(normals);
-                    if (normals.Count != 0)
+                    if (left < normals[j] && normals[j] < right)
                     {
-                        for (int j = normals.Count - 1; j >= 0; j--)
-                        {
-                            if (lions[i] < normals[j] && lions[i - 1] > normals[j])
-                            {
-                                lions.Insert(i, normals[j]);
-                                normals.RemoveAt(j);
-                            }
-                        }
-                    }
-                }
-                else if (lions[i] > lions[i - 1])//작 큰
-                {
-                    smalltobig(normals);
-                    if (normals.Count != 0)
-                    {
-                        for (int j = normals.Count - 1; j >= 0; j--)
-                        {
-                            if (lions[i] > normals[j] && lions[i - 1] < normals[j])
-                            {
-                                lions.Insert(i, normals[j]);
-                                normals.RemoveAt(j);
-                            }
-                        }
+                        normals.RemoveAt(i);
                     }
                 }
             }
 
-            //int temp = 0;
-            //int index = 0;
-            //int result = 1000000000;
 
-            /////제일 gap이 작은 수를 찾아서 그 앞 뒤 로 배치 후 결과값만 비교
-            //if (normals.Count != 0)
-            //{
-            //    for (int i = normals.Count - 1; i >= 0; i--)
-            //    {
-            //        index = 0;
-            //        for (int j = lions.Count - 1; j >= 0; j--)
-            //        {
-            //            temp = 0;
-            //            lions.Insert(j + 1, normals[i]);
-            //            for (int k = lions.Count - 1; k > 0; k--)
-            //            {
-            //                temp += Math.Abs(lions[k] - lions[k - 1]);
-            //            }
-            //            if (result > temp)
-            //            {
-            //                result = temp;
-            //                index = j + 1;
-            //            }
-            //            lions.RemoveAt(j + 1);
-            //        }
-            //        lions.Insert(index, normals[i]);
-            //        normals.RemoveAt(i);
-            //    }
-            //}
-            int gap = 10000;
-            int index = 0;
+
+
             int result = 0;
-            if(normals.Count != 0)
-            {
-                for(int i=normals.Count-1; i>=0; i--)
-                {
-                    for(int j=lions.Count-1; j>=0; j--)
-                    {
-                        int temp = Math.Abs(normals[i] - lions[j]);
-                        if(gap>temp)
-                        {
-                            gap = temp;
-                            index = j;
-                        }
-                    }
 
-
-                }
-            }
-            else
+            for (int i = 1; i < lions.Count; i++)
             {
-                result = 0;
-                for (int i = 1; i < lions.Count; i++)
-                {
-                    result += Math.Abs(lions[i] - lions[i - 1]);
-                }
+                result += Math.Abs(lions[i] - lions[i - 1]);
             }
+
+            //result += Math.min 으로 normals에 남아있는 첫 수 와 마지막 수. lion 0, 마지막 이렇게 비교해서 result에 더하기
             //Console.WriteLine();
             Console.WriteLine($"{result}");
             //Console.WriteLine();

@@ -61,6 +61,8 @@ namespace _20260210_beakjoon_2317
                 for (int i = 0; i < normals.Count; i++)
                 {
                     int gap = 0;
+                    gap = Math.Abs(normals[i] - lions[0]);
+                    if (gap > Math.Abs(normals[i] - lions[lions.Count - 1])) gap = Math.Abs(normals[i] - lions[lions.Count - 1]);
                     for (int j = 0; j < lions.Count - 1; j++)
                     {
                         int temp = Math.Abs(normals[i] - lions[j]) + Math.Abs(normals[i] - lions[j + 1]) - Math.Abs(lions[j] - lions[j + 1]);

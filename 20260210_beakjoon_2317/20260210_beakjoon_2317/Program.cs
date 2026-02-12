@@ -48,53 +48,109 @@ namespace _20260210_beakjoon_2317
                 }
             }
 
-            int result = 0;
+            long sum = 0;
+            long result = 0;
 
             for (int i = 1; i < lions.Count; i++)
             {
-                result += Math.Abs(lions[i] - lions[i - 1]);
+                sum += Math.Abs(lions[i] - lions[i - 1]);
             }
 
 
-            if (normals.Count != 0)
+            if (normals.Count > 1)
             {
-                for (int i = 0; i < normals.Count; i++)
+                int gap_first = Math.Abs(normals[0] - lions[0]);
+                int index_first = 0;
+                if (gap_first > Math.Abs(normals[0] - lions[lions.Count - 1]))
                 {
-                    int gap = 0;
-                    gap = Math.Abs(normals[i] - lions[0]);
-                    if (gap > Math.Abs(normals[i] - lions[lions.Count - 1])) gap = Math.Abs(normals[i] - lions[lions.Count - 1]);
-                    for (int j = 0; j < lions.Count - 1; j++)
+                    gap_first = Math.Abs(normals[0] - lions[lions.Count - 1]);
+                    index_first = lions.Count - 1;
+                }
+                for (int j = 1; j < lions.Count; j++)
+                {
+                    int temp = Math.Abs(normals[0] - lions[j]) + Math.Abs(normals[0] - lions[j - 1]) - Math.Abs(lions[j] - lions[j - 1]);
+                    if (temp < gap_first)
                     {
-                        int temp = Math.Abs(normals[i] - lions[j]) + Math.Abs(normals[i] - lions[j + 1]) - Math.Abs(lions[j] - lions[j + 1]);
-                        if (temp < gap) gap = temp;
+                        gap_first = temp;
+                        index_first = j;
                     }
                 }
+
+                int gap_last = Math.Abs(normals[normals.Count - 1] - lions[0]);
+                int index_last = 0;
+                if (gap_last > Math.Abs(normals[normals.Count - 1] - lions[lions.Count - 1]))
+                {
+                    gap_last = Math.Abs(normals[normals.Count - 1] - lions[lions.Count - 1]);
+                    index_last = lions.Count - 1;
+                }
+                for (int j = 1; j < lions.Count; j++)
+                {
+                    int temp = Math.Abs(normals[normals.Count - 1] - lions[j]) + Math.Abs(normals[normals.Count - 1] - lions[j - 1]) - Math.Abs(lions[j] - lions[j - 1]);
+                    if (temp < gap_last)
+                    {
+                        gap_last = temp;
+                        index_last = j;
+                    }
+                }
+
+                //if (index_first == index_last && (index_first != 0 || index_first != lions.Count-1))
+                //{
+                //    result = gap_first + gap_last + sum;
+                //}
+                //if ((index_first == index_last) && ((index_first == 0) || (index_first == lions.Count - 1)))
+                //{
+                //    int gap = Math.Max(gap_first, gap_last);
+                //    result = gap + sum;
+                //}
+                //else if ((index_first == index_last) && ((index_first != 0) || (index_first != lions.Count - 1)))
+                //{
+                //    int gap_small = Math.Min(gap_first, gap_last);
+                //    if (gap_small == gap_first)
+                //    {
+                //        int gap = Math.Abs(lions[index_first] - normals[0]) + Math.Abs(normals[normals.Count - 1] - normals[0]) + Math.Abs(normals[normals.Count - 1] - lions[index_first]) + Math.Abs(lions[index_first] - lions[index_first - 1]);
+                //        result = gap + sum;
+                //    }
+                //}
+                //else
+                //{
+                //    result = gap_first + gap_last + sum;
+                //}
+
+                int lion_min = lions.Min();
+                int lion_max = lions.Max();
+                int gap = 0;
+                if(normals[0] < lion_min)
+                {
+                    gap += gap_first;
+                }
+                if(normals[normals.Count-1] > lion_max)
+                {
+                    gap += gap_last;
+                }
+                result = gap + sum;
+            }
+            else if (normals.Count == 1)
+            {
+                int gap = Math.Abs(normals[0] - lions[0]);
+                if (gap > Math.Abs(normals[0] - lions[lions.Count - 1]))
+                {
+                    gap = Math.Abs(normals[0] - lions[lions.Count - 1]);
+                }
+                for (int j = 1; j < lions.Count; j++)
+                {
+                    int temp = Math.Abs(normals[0] - lions[j]) + Math.Abs(normals[0] - lions[j - 1]) - Math.Abs(lions[j] - lions[j - 1]);
+                    if (temp < gap)
+                    {
+                        gap = temp;
+                    }
+                }
+                result = gap + sum;
+            }
+            else
+            {
+                result = sum;
             }
 
-
-
-            //int lion_min = Math.Min(lions[0], lions[lions.Count - 1]);
-            //int lion_max = Math.Max(lions[0], lions[lions.Count - 1]);
-
-            //if (normals.Count > 0)
-            //{
-            //    if (normals[0] < lion_min)
-            //    {
-            //        result += Math.Abs(normals[0] - lion_min);
-            //    }
-
-            //    if (normals[normals.Count - 1] > lion_max)
-            //    {
-            //        result += Math.Abs(normals[normals.Count - 1] - lion_max);
-            //    }
-
-            //normals[0]
-            //normals[normals.Count-1]
-            //int min_left = Math.Min()
-
-
-
-            //result += Math.min 으로 normals에 남아있는 첫 수 와 마지막 수. lion 0, 마지막 이렇게 비교해서 result에 더하기
             //Console.WriteLine();
             Console.WriteLine($"{result}");
             sr.ReadLine();
@@ -105,3 +161,5 @@ namespace _20260210_beakjoon_2317
         }
     }
 }
+
+

@@ -1,0 +1,7 @@
+C:\Users\user\Desktop\Unity\nonamed\20260212.beakjoon_25314\20260212.beakjoon_25314\bin\Debug\20260212.beakjoon_25314.exe.config
+C:\Users\user\Desktop\Unity\nonamed\20260212.beakjoon_25314\20260212.beakjoon_25314\bin\Debug\20260212.beakjoon_25314.exe
+C:\Users\user\Desktop\Unity\nonamed\20260212.beakjoon_25314\20260212.beakjoon_25314\bin\Debug\20260212.beakjoon_25314.pdb
+C:\Users\user\Desktop\Unity\nonamed\20260212.beakjoon_25314\20260212.beakjoon_25314\obj\Debug\20260212.beakjoon_25314.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\Unity\nonamed\20260212.beakjoon_25314\20260212.beakjoon_25314\obj\Debug\20260212.beakjoon_25314.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\Unity\nonamed\20260212.beakjoon_25314\20260212.beakjoon_25314\obj\Debug\20260212.beakjoon_25314.exe
+C:\Users\user\Desktop\Unity\nonamed\20260212.beakjoon_25314\20260212.beakjoon_25314\obj\Debug\20260212.beakjoon_25314.pdb

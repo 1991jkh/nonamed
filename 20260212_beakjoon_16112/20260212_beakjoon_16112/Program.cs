@@ -11,30 +11,30 @@ namespace _20260212_beakjoon_16112
     {
         static void Main(string[] args)
         {
-            StringBuilder sb = new StringBuilder();
             StreamReader sr = new StreamReader(Console.OpenStandardInput());
 
             string[] input = sr.ReadLine().Split(' ');
             string[] input_nd = sr.ReadLine().Split(' ');
 
-            int acount = int.Parse(input[0]);
-            int activeCount = int.Parse(input[1]);
+            long acount = long.Parse(input[0]);
+            long activeCount = long.Parse(input[1]);
 
-            List<int> stone = new List<int>();
+            List<long> stone = new List<long>();
 
             for (int i = 0; i < acount; i++)
             {
-                stone.Add(int.Parse(input_nd[i]));
+                stone.Add(long.Parse(input_nd[i]));
             }
 
             stone.Sort();
 
-            int result = 0;
+            long result = 0;
+            long count = 0;
 
-            for(int i= stone.Count-1; activeCount>=0; i--)
+            for(int i=0; i<stone.Count;i++)
             {
-                result += stone[i] * activeCount;
-                activeCount--;
+                result += stone[i] * count;
+                if (count < activeCount) count++;
             }
 
             Console.WriteLine($"{result}");

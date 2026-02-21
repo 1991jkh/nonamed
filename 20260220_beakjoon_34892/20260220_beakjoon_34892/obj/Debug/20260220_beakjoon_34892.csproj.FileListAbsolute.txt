@@ -5,3 +5,10 @@ C:\Users\user\Desktop\Unity\nonamed\20260220_beakjoon_34892\20260220_beakjoon_34
 C:\Users\user\Desktop\Unity\nonamed\20260220_beakjoon_34892\20260220_beakjoon_34892\obj\Debug\20260220_beakjoon_34892.csproj.CoreCompileInputs.cache
 C:\Users\user\Desktop\Unity\nonamed\20260220_beakjoon_34892\20260220_beakjoon_34892\obj\Debug\20260220_beakjoon_34892.exe
 C:\Users\user\Desktop\Unity\nonamed\20260220_beakjoon_34892\20260220_beakjoon_34892\obj\Debug\20260220_beakjoon_34892.pdb
+D:\GitHub\nonamed\20260220_beakjoon_34892\20260220_beakjoon_34892\bin\Debug\20260220_beakjoon_34892.exe.config
+D:\GitHub\nonamed\20260220_beakjoon_34892\20260220_beakjoon_34892\bin\Debug\20260220_beakjoon_34892.exe
+D:\GitHub\nonamed\20260220_beakjoon_34892\20260220_beakjoon_34892\bin\Debug\20260220_beakjoon_34892.pdb
+D:\GitHub\nonamed\20260220_beakjoon_34892\20260220_beakjoon_34892\obj\Debug\20260220_beakjoon_34892.csproj.AssemblyReference.cache
+D:\GitHub\nonamed\20260220_beakjoon_34892\20260220_beakjoon_34892\obj\Debug\20260220_beakjoon_34892.csproj.CoreCompileInputs.cache
+D:\GitHub\nonamed\20260220_beakjoon_34892\20260220_beakjoon_34892\obj\Debug\20260220_beakjoon_34892.exe
+D:\GitHub\nonamed\20260220_beakjoon_34892\20260220_beakjoon_34892\obj\Debug\20260220_beakjoon_34892.pdb

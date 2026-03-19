@@ -1,0 +1,7 @@
+C:\Users\user\Desktop\Unity\nonamed\20260319_programmers_92335\20260319_programmers_92335\obj\Debug\20260319_programmers_92335.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\Unity\nonamed\20260319_programmers_92335\20260319_programmers_92335\obj\Debug\20260319_programmers_92335.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\Unity\nonamed\20260319_programmers_92335\20260319_programmers_92335\bin\Debug\20260319_programmers_92335.exe.config
+C:\Users\user\Desktop\Unity\nonamed\20260319_programmers_92335\20260319_programmers_92335\bin\Debug\20260319_programmers_92335.exe
+C:\Users\user\Desktop\Unity\nonamed\20260319_programmers_92335\20260319_programmers_92335\bin\Debug\20260319_programmers_92335.pdb
+C:\Users\user\Desktop\Unity\nonamed\20260319_programmers_92335\20260319_programmers_92335\obj\Debug\20260319_programmers_92335.exe
+C:\Users\user\Desktop\Unity\nonamed\20260319_programmers_92335\20260319_programmers_92335\obj\Debug\20260319_programmers_92335.pdb

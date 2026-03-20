@@ -22,7 +22,7 @@ namespace _20260319_programmers_92335
             List<int> remains = new List<int>();
             int remain;
             int quotient = n;
-            while (quotient > k)
+            while (quotient >= k)
             {
                 remain = quotient % k;
                 quotient /= k;
@@ -30,60 +30,56 @@ namespace _20260319_programmers_92335
             }
             remains.Add(quotient);
 
-            for (int i = 0; i < remains.Count; i++)
-            {
-                Console.WriteLine(remains[i]);
-
-            }
-
-
-            int checkdecimal = 0;
+            double checkdecimal = 0;
             int digits = 0;
-            int count = 0;
-            bool isDecimal = true;
+
+            bool isDecimal;
 
             for (int i = 0; i < remains.Count; i++)
             {
                 isDecimal = true;
-                checkdecimal += remains[i] * (int)Math.Pow(k, digits);
-                int temp = remains[i];
+                checkdecimal += remains[i] * Math.Pow(10, digits);
                 digits++;
                 if (remains[i] == 0)
                 {
-                    if (checkdecimal == 1)
+                    if (checkdecimal == 1 || checkdecimal == 0)
                     {
                         checkdecimal = 0;
                         digits = 0;
+                        isDecimal = false;
                         continue;
                     }
-                    count = 0;
-                    for (int j = 2; j < checkdecimal; j++)
+                    else
                     {
-                        if (checkdecimal % j == 0)
+                        for (long j = 2; j*j <= checkdecimal; j++)
                         {
-                            count++;
+                            if (checkdecimal % j == 0)
+                            {
+                                checkdecimal = 0;
+                                digits = 0;
+                                isDecimal = false;
+                                break;
+                            }
                         }
-                        if (count > 2)
-                        {
-                            isDecimal = false;
-                            break;
-                        }
+                        checkdecimal = 0;
+                        digits = 0;
+                        if (isDecimal) answer++;
                     }
-                    checkdecimal = 0;
-                    digits = 0;
-                    if (isDecimal) answer++;
-                    continue;
                 }
             }
-            count = 0;
+
             isDecimal = true;
-            for (int j = 2; j < checkdecimal; j++)
+
+            if (checkdecimal == 1 || checkdecimal == 0)
+            {
+                checkdecimal = 0;
+                digits = 0;
+                isDecimal = false;
+            }
+
+            for (long j = 2; j*j <= checkdecimal; j++)
             {
                 if (checkdecimal % j == 0)
-                {
-                    count++;
-                }
-                if (count > 2)
                 {
                     isDecimal = false;
                     break;

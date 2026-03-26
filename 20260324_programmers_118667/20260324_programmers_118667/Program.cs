@@ -44,7 +44,7 @@ namespace _20260324_programmers_118667
                     Queue2.Enqueue(queue2[i]);
                 }
 
-                while (sum1 == sum2)
+                while (sum1 != sum2)
                 {
                     if (sum1 > sum2)
                     {
@@ -62,7 +62,13 @@ namespace _20260324_programmers_118667
                         sum1 += temp;
                         count++;
                     }
+                    if (count > queue1.Length * 4)
+                    {
+                        count = -1;
+                        break;
+                    }
                 }
+
                 answer = count;
             }
 
